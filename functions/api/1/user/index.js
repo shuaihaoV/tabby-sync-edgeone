@@ -1,19 +1,20 @@
-import { sha512 } from "../../../utils";
+import { checkToken, sha512 } from "../../../utils";
 
 
 // Get 请求
 export async function onRequestGet(context) {
     const token = context.request.headers.get('Authorization');
-    const expectedToken = await sha512(token);
-  
-    // 检查授权令牌是否有效
-    if (!token || token !== expectedToken) {
-      return new Response('Unauthorized', { status: 403 });
-    }
+    
+    const user_info = await checkToken(token);
+
+    // // 检查授权令牌是否有效
+    // if (!token || token !== expectedToken) {
+    //   return new Response('Unauthorized', { status: 403 });
+    // }
   
     const json = JSON.stringify({
         "code": 0,
-        "message": "Get User"
+        "message": user_info
     });
     return new Response(json, {
         headers: {

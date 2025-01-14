@@ -16,9 +16,11 @@ export async function sha512(str) {
 }
 
 export async function checkToken(token){
-    if (!token || token.length < 64){
+    if (!token || token.length < 1){
         return false;
     }
     const expectedToken = await sha512(token);
-    
+    const user_info = kv_users.get(expectedToken);
+    console.log("user_info", user_info);
+    return user_info;
 }
