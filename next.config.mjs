@@ -8,9 +8,14 @@ const rewrites = () => {
     ];
   };
 const nextConfig = {
+    trailingSlash: true,
+    skipTrailingSlashRedirect: true,
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
     output: 'export',
-    outDir: './out'
-    // rewrites,
+    outDir: './out',
+    rewrites
 };
 
 export default nextConfig;
