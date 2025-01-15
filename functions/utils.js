@@ -56,7 +56,6 @@ export async function generateToken() {
 
 export async function importKey(keyHex) {
     // Convert hex string back to raw binary format
-    console.log("keyHex: ", keyHex);
     const rawKey = new Uint8Array(
         keyHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16))
     );
@@ -121,3 +120,11 @@ export function getFormattedDate() {
 }
 
 
+// 错误响应函数
+export function errorResponse(detail, status = 500) {
+    const errorResponse = {
+        detail,
+        status,
+    };
+    return new Response(JSON.stringify({ detail: e.to_string() }), { status });
+}
