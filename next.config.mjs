@@ -15,7 +15,7 @@ const nextConfig = {
     },
     output: 'export',
     outDir: './out',
-    rewrites
+    // rewrites
 };
 
 export default nextConfig;
