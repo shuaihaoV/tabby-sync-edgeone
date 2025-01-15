@@ -42,7 +42,7 @@ export async function onRequestPatch(context) {
     let req_json = await context.request.json();
     config_value.last_used_with_version = req_json.last_used_with_version;
     config_value.content = await encrypt(encrypt_key, req_json.content);
-    config_value.updated_at = new Date().toISOString();
+    config_value.modified_at = new Date().toISOString();
     await kv_configs.put(`${expectedToken}_${config_id}`, JSON.stringify(config_value));
     config_value.content = await decrypt(encrypt_key, config_value.content);
     return new Response(JSON.stringify(config_value), {

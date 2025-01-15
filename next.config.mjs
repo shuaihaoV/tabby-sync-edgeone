@@ -13,9 +13,9 @@ const nextConfig = {
     experimental: {
         missingSuspenseWithCSRBailout: false,
     },
-    output: 'export',
-    outDir: './out',
-    // rewrites
+    // output: 'export',
+    // outDir: './out',
+    rewrites
 };
 
 export default nextConfig;

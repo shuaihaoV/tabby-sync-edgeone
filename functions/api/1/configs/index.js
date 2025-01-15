@@ -65,7 +65,7 @@ export async function onRequestPost(context) {
         content: enc_content,
         last_used_with_version: null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        modified_at: new Date().toISOString(),
         user_id: 1
     });
     await kv_configs.put(`${expectedToken}_${user_info.max_id + 1}`, config);
