@@ -7,7 +7,7 @@ export async function onRequestGet(context) {
     });
     return new Response(json, {
         headers: {
-            'content-type': 'text/html; charset=UTF-8',
+            'content-type': 'application/json',
             'x-edgefunctions-test': 'Welcome to use Pages Functions.',
         },
     });
@@ -30,8 +30,7 @@ export async function onRequestPatch(context) {
     });
     return new Response(json, {
         headers: {
-            'content-type': 'text/html; charset=UTF-8',
-            'x-edgefunctions-test': 'Welcome to use Pages Functions.',
+            'content-type': 'application/json'
         },
     });
 }
@@ -52,8 +51,7 @@ export async function onRequestDelete(context) {
     });
     return new Response(json, {
         headers: {
-            'content-type': 'text/html; charset=UTF-8',
-            'x-edgefunctions-test': 'Welcome to use Pages Functions.',
+            'content-type': 'application/json'
         },
     });
 }
