@@ -37,7 +37,7 @@ export default function CreateUserDialog({
         }).then(async res => {
           if (res.ok) {
             const res_json = await res.json();
-            const token = res_json.token;
+            const token = res_json.config_sync_token;
             setNewToken(token);
             toast({
               title: t("createUser.createAccountSuccess"),

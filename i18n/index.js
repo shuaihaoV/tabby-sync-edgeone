@@ -6,7 +6,7 @@ const i18n = {
     en,
     zh,
   },
-  defaultLang: "en",
+  defaultLang: "zh",
   useBrowserDefault: true,
   languageDataStore: "query" || "localStorage",
 };
