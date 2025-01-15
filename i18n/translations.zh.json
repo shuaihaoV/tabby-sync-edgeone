@@ -1,7 +1,7 @@
 {
   "login":{
     "title": "登录",
-    "description": "登录到Tabby Sync Unofficial",
+    "description": "登录到Tabby Sync EdgeOne",
     "usernameLabel": "用户名",
     "usernamePlaceholder": "请输入用户名",
     "tokenLabel": "令牌",
@@ -11,7 +11,7 @@
     "loginSuccess": "登录成功"
   },
   "createUser":{
-    "title": "创建Tabby Sync Unofficial账户",
+    "title": "创建Tabby Sync EdgeOne账户",
     "description": "请妥善保存您的令牌,该令牌明文仅展示一次",
     "usernameLabel": "用户名",
     "tokenLabel":"令牌",
@@ -95,6 +95,6 @@
   },
   "dashbord":{
     "title":"欢迎",
-    "description":"Tabby Sync Unofficial 个人中心"
+    "description":"Tabby Sync EdgeOne 个人中心"
   }
 }

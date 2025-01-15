@@ -81,7 +81,7 @@ export default function Home() {
           <CardFooter className='flex justify-center mt-3'>
             2024 @Shuaihao
             <a
-              href="https://github.com/shuaihaoV/tabby-sync-unofficial"
+              href="https://github.com/shuaihaoV/tabby-sync-edgeone"
               className="pl-2 font-medium text-primary underline underline-offset-4 top-2"
               target="_blank"
               rel="noreferrer"
@@ -146,7 +146,7 @@ export default function Home() {
           <CardFooter className='flex justify-center mt-3'>
             2024 @Shuaihao
             <a
-              href="https://github.com/shuaihaoV/tabby-sync-unofficial"
+              href="https://github.com/shuaihaoV/tabby-sync-edgeone"
               className="pl-2 font-medium text-primary underline underline-offset-4 top-2"
               target="_blank"
               rel="noreferrer"

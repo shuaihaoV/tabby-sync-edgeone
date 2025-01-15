@@ -15,8 +15,8 @@ export const viewport: Viewport = {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tabby Sync Unofficial Web",
-  description: "Tabby Sync Unofficial Web",
+  title: "Tabby Sync EdgeOne Web",
+  description: "Tabby Sync EdgeOne Web",
 };
 
 export default function RootLayout({
