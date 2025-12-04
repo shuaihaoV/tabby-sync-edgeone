@@ -26,10 +26,9 @@ export async function onRequestGet(context) {
         keys_list.push(...list_result.keys);
         list_options.cursor = list_result.cursor;
     } while (list_result.complete !== true);
-
+    throw new Error(`Debug: ${JSON.stringify(keys_list)}`);
     let configs = [];
     for (const item of keys_list) {
-        console.log("item.key:", item.key);
         let config_value = await kv_configs.get(item.key,"json");
         config_value.content = await decrypt(encrypt_key, config_value.content);
         configs.push(config_value);
