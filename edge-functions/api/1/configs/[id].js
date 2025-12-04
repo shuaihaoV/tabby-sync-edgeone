@@ -14,7 +14,7 @@ export async function onRequestGet(context) {
     const config_id = context.params.id;
 
     let config_value = await kv_configs.get(`${expectedToken}_${config_id}`, "json");
-    throw new Error(`CUSTOM ERROR API ${config_value}`);
+    throw new Error(`CUSTOM ERROR API1 ${config_id}`);
 
     config_value.content = await decrypt(encrypt_key, config_value.content);
 
