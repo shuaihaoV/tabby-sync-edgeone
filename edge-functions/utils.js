@@ -95,7 +95,13 @@ export async function encrypt(key, plaintext) {
 }
 
 export async function decrypt(key, ciphertext) {
+    if (!ciphertext || typeof ciphertext !== 'string') {
+        return null;
+    }
     const [ivHex, encryptedDataHex] = ciphertext.split('.');
+    if (!ivHex || !encryptedDataHex) {
+        return null;
+    }
     const iv = new Uint8Array(ivHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
     const encryptedData = new Uint8Array(encryptedDataHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
     const decryptedData = await crypto.subtle.decrypt(
