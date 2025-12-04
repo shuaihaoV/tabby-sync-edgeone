@@ -10,11 +10,11 @@ export async function onRequestGet(context) {
     }
 
     const expectedToken = await sha512(token);
-    throw new Error("CUSTOM ERROR API");
     let encrypt_key = await importKey(token);
     const config_id = context.params.id;
 
     let config_value = await kv_configs.get(`${expectedToken}_${config_id}`, "json");
+    throw new Error(`CUSTOM ERROR API ${config_value}`);
 
     config_value.content = await decrypt(encrypt_key, config_value.content);
 
