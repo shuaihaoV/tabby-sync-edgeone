@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/table"
 import { URL_PREFIX, UserInfo, ConfigInfo } from "@/lib/type";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { useTranslation } from "next-export-i18n";
+import { useTranslations } from 'next-intl';
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu";
 import { toast } from "@/components/ui/use-toast";
 import {
@@ -35,7 +35,7 @@ export default function ConfigsTable({
 }: Readonly<{
     userInfo: UserInfo;
 }>) {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [configList, setConfigList] = useState<ConfigInfo[]>([]);
     const [viewConfig, setViewConfig] = useState<ConfigInfo>();
     const [sorting, setSorting] = useState<SortingState>([{ id: "id", desc: true }]);

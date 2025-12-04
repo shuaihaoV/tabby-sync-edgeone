@@ -1,4 +1,4 @@
-import { useTranslation } from "next-export-i18n";
+import { useTranslations } from 'next-intl';
 import {
     Dialog,
     DialogContent,
@@ -22,7 +22,7 @@ export default function RotateTokenDialog({
     children: React.ReactNode;
     userInfo: UserInfo;
 }>) {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [loadding, setLoadding] = useState(false);
     const [newToken, setNewToken] = useState("");
     async function handleRotateToken(event: FormEvent<HTMLFormElement>) {

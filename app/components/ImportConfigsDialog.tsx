@@ -1,4 +1,4 @@
-import { useTranslation } from "next-export-i18n";
+import { useTranslations } from 'next-intl';
 import {
     Dialog,
     DialogContent,
@@ -28,7 +28,7 @@ export default function ImportConfigsDialog({
     children: React.ReactNode;
     userInfo: UserInfo;
 }>) {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [files, setFiles] = useState<File[] |null>([]);
     const dropZoneConfig = {
         maxFiles: 1,

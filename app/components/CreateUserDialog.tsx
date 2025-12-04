@@ -1,4 +1,4 @@
-import { useTranslation } from "next-export-i18n";
+import { useTranslations } from 'next-intl';
 import {
     Dialog,
     DialogContent,
@@ -18,7 +18,7 @@ export default function CreateUserDialog({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { t } = useTranslation();
+    const t = useTranslations();
     const [newToken, setNewToken] = useState<string>("");
 
     async function handleCreateUser(event: FormEvent<HTMLFormElement>) {

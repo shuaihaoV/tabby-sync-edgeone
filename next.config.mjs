@@ -10,11 +10,7 @@ const rewrites = () => {
 const nextConfig = {
     trailingSlash: true,
     skipTrailingSlashRedirect: true,
-    experimental: {
-        missingSuspenseWithCSRBailout: false,
-    },
     output: 'export',
-    outDir: './out',
     // rewrites
 };
 

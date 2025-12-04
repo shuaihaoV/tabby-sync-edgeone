@@ -2,9 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import DisplayChanger from "@/components/DisplayChanger";
 import LanguageChanger from "@/i18n/LanguageChanger";
-import {
-  useTranslation
-} from "next-export-i18n";
+import { useTranslations } from 'next-intl';
 import { FloatingLabelInput } from '@/components/ui/float-label-input';
 import { Button } from '@/components/ui/button';
 import { FormEvent, useState } from 'react';
@@ -20,7 +18,7 @@ import ConfigsTable from './components/ConfigsTable';
 
 
 export default function Home() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [userinfo, setUserinfo] = useState<UserInfo>();
   const [refreshKey, setRefreshKey] = useState(0);
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
