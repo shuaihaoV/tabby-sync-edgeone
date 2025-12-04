@@ -1,4 +1,4 @@
-import { sha512, checkToken, decrypt, encrypt, getFormattedDate, importKey } from "../../../utils";
+import { sha512, checkToken, decrypt, encrypt, getFormattedDate, importKey, parseKVValue } from "../../../utils";
 
 // Get 请求
 export async function onRequestGet(context) {
@@ -14,7 +14,10 @@ export async function onRequestGet(context) {
     const config_id = context.params.id;
 
     let config_value = await kv_configs.get(`${expectedToken}_${config_id}`, "json");
-    throw new Error(`CUSTOM ERROR API3 ${typeof config_value} ${config_value === null} ${JSON.stringify(config_value).substring(0, 15)}`);
+    config_value = parseKVValue(config_value);
+    if (!config_value) {
+        return new Response('Config not found', { status: 404 });
+    }
 
     config_value.content = await decrypt(encrypt_key, config_value.content);
 
@@ -40,6 +43,10 @@ export async function onRequestPatch(context) {
     const config_id = context.params.id;
 
     let config_value = await kv_configs.get(`${expectedToken}_${config_id}`, "json");
+    config_value = parseKVValue(config_value);
+    if (!config_value) {
+        return new Response('Config not found', { status: 404 });
+    }
     let req_json = await context.request.json();
     config_value.last_used_with_version = req_json.last_used_with_version;
     config_value.content = await encrypt(encrypt_key, req_json.content);

@@ -1,3 +1,25 @@
+/**
+ * 解析KV存储返回的值，处理可能是JSON对象或字符串的情况
+ * @param {any} value - KV存储返回的值
+ * @returns {object|null} 解析后的JSON对象，如果解析失败返回null
+ */
+export function parseKVValue(value) {
+    if (value === null || value === undefined) {
+        return null;
+    }
+    if (typeof value === 'object') {
+        return value;
+    }
+    if (typeof value === 'string') {
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
 export async function sha512(str) {
     // 编码
     const encodeContent = new TextEncoder().encode(str);
@@ -19,6 +41,7 @@ export async function checkToken(token) {
     }
     const expectedToken = await sha512(token);
     let user_info = await kv_users.get(expectedToken, "json");
+    user_info = parseKVValue(user_info);
     return user_info;
 }
 

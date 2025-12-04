@@ -1,4 +1,4 @@
-import { sha512,checkToken, decrypt, encrypt, getFormattedDate, importKey } from "../../../utils";
+import { sha512, checkToken, decrypt, encrypt, getFormattedDate, importKey, parseKVValue } from "../../../utils";
 
 // Get 请求
 export async function onRequestGet(context) {
@@ -28,9 +28,12 @@ export async function onRequestGet(context) {
     } while (list_result.complete !== true);
     let configs = [];
     for (const item of keys_list) {
-        let config_value = await kv_configs.get(item.key,"json");
-        config_value.content = await decrypt(encrypt_key, config_value.content);
-        configs.push(config_value);
+        let config_value = await kv_configs.get(item.key, "json");
+        config_value = parseKVValue(config_value);
+        if (config_value) {
+            config_value.content = await decrypt(encrypt_key, config_value.content);
+            configs.push(config_value);
+        }
     }
     return new Response(JSON.stringify(configs), {
         headers: {
