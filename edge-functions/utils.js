@@ -122,9 +122,10 @@ export function getFormattedDate() {
 
 // 错误响应函数
 export function errorResponse(detail, status = 500) {
-    const errorResponse = {
-        detail,
+    return new Response(JSON.stringify({ detail, status }), { 
         status,
-    };
-    return new Response(JSON.stringify({ detail: e.to_string() }), { status });
+        headers: {
+            'content-type': 'application/json'
+        }
+    });
 }
