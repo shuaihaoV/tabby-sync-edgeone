@@ -2,7 +2,6 @@ import { sha512, checkToken, decrypt, encrypt, getFormattedDate, importKey } fro
 
 // Get 请求
 export async function onRequestGet(context) {
-    throw new Error("CUSTOM ERROR API");
     const auth_header = context.request.headers.get('Authorization')
     const token = auth_header !== null ? auth_header.replace(/^Bearer\s/, '') : null;
     const user_info = await checkToken(token);
@@ -11,6 +10,7 @@ export async function onRequestGet(context) {
     }
 
     const expectedToken = await sha512(token);
+    throw new Error("CUSTOM ERROR API");
     let encrypt_key = await importKey(token);
     const config_id = context.params.id;
 
