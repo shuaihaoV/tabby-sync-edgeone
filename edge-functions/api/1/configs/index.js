@@ -26,7 +26,6 @@ export async function onRequestGet(context) {
         keys_list.push(...list_result.keys);
         list_options.cursor = list_result.cursor;
     } while (list_result.complete !== true);
-    throw new Error(`Debug: ${JSON.stringify(keys_list)}`);
     let configs = [];
     for (const item of keys_list) {
         let config_value = await kv_configs.get(item.key,"json");
